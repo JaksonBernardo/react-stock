@@ -1,0 +1,138 @@
+/* src/css/Dashboard.css */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background: #f5f6fa;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(135deg, #1E1E2F 40%, #2E2E40 100%);
+    color: #fff;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #45a049;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ddd;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: #357b37;
+    color: #fff;
+}
+
+.sidebar-footer a {
+    color: #f55;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    color: #1E1E2F;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Cards */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    color: #357b37;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Seção de gráficos */
+.charts-section h2 {
+    color: #1E1E2F;
+    margin-bottom: 20px;
+}
+
+.chart-placeholder {
+    background: #fff;
+    border-radius: 12px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn-logout {
+    cursor: pointer;
+}

@@ -53,7 +53,7 @@ const SideBar = () => {
                 </a>
 
                 <a
-                    className={isActive("/dashboard/suppliers") ? "active" : ""}
+                    className={isActive("/dashboard/suppliers") || isActive("/dashboard/suppliers/new") ? "active" : ""}
                     onClick={() => navigate("/dashboard/suppliers")}
                 >
                     <FaTruck /> Fornecedores

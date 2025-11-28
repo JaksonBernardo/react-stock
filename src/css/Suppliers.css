@@ -1,0 +1,220 @@
+.spinner {
+    border: 3px solid #357b37;
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 0.8s linear infinite;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.div-btn-supplier {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.float-action-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    border-radius: 50%!important;
+    transition: all ease 0.3s;
+}
+
+.float-action-button:hover {
+    transform: translateY(-2px);
+}
+
+.btn-add {
+    text-decoration: none;
+    background-color: #357b37;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-add:hover {
+    background-color: #45a049;
+}
+
+.form-supplier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+    gap: 25px;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    .form-fields {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+}
+
+.btn-save {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    font-weight: 500;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+}
+
+.btn-save:hover {
+    background-color: #3c8d40;
+    transform: translateY(-2px);
+}
+
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px 0px;
+}
+
+.input-container > div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+    gap: 0px 10px;
+}
+
+
+.suppliers {
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+    gap: 20px;
+    padding: 30px 0px;
+}
+
+.supplier-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    height: 5vh;
+}
+
+.supplier-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px #2e7d3230;
+}
+
+.icon-area {
+    background: #e6f4ea;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-area svg {
+    color: #2e7d32;
+}
+
+.info-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-area .name {
+    font-size: 17px;
+    font-weight: 600;
+    color: #357b37;
+}
+
+.info-area .contact {
+    font-size: 14px;
+    color: #777;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.btn-action svg {
+    color: #444;
+}
+
+.btn-action.edit:hover {
+    background-color: #e0ffe0;
+}
+
+.btn-action.edit:hover svg {
+    color: #2e7d32;
+}
+
+.btn-action.delete:hover {
+    background-color: #ffe0e0;
+}
+
+.btn-action.delete:hover svg {
+    color: #c62828;
+}
+
+

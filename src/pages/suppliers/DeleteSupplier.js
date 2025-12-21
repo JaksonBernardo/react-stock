@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Swal from 'sweetalert2';
 
-import "../css/Suppliers.css";
+import "../../css/Suppliers.css";
 
-import getSupplierById from "../utils/suppliers/getSupplierById";
-import deleteSupplierById from "../utils/suppliers/deleteSupplierById";
+import getSupplierById from "../../utils/suppliers/getSupplierById";
+import deleteSupplierById from "../../utils/suppliers/deleteSupplierById";
 
 const DeleteSupplier = () => {
 

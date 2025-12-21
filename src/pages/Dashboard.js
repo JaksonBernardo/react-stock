@@ -1,5 +1,10 @@
 import { jwtDecode } from 'jwt-decode';
 
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import InventoryIcon from '@mui/icons-material/Inventory';
+
 import MainCard from '../components/main/MainCard';
 
 const Dashboard = () => {
@@ -17,10 +22,10 @@ const Dashboard = () => {
 
             {/* Cards de resumo */}
             <section className="stats-cards">
-                <MainCard title={"Entradas"} text={"245 itens"}/>
-                <MainCard title={"Saídas"} text={"120 itens"}/>
-                <MainCard title={"Vendas"} text={"R$ 4.320,62"}/>
-                <MainCard title={"Valor em Estoque"} text={"R$ 134.550,02"}/>
+                <MainCard icon={<TrendingUpIcon size={24} />} title={"Entradas"} value={"R$ 15.235,77"}/>
+                <MainCard icon={<TrendingDownIcon size={24} />} title={"Saídas"} value={"R$ 12.009,32"}/>
+                <MainCard icon={<CurrencyExchangeIcon size={24} />} title={"Vendas"} value={"R$ 19.207,82"}/>
+                <MainCard icon={<InventoryIcon size={24} />} title={"Estoque"} value={"R$ 134.550,02"}/>
             </section>
 
             {/* Gráficos / Relatórios */}

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import TextField from "@mui/material/TextField";
 import Swal from 'sweetalert2';
@@ -16,34 +16,73 @@ import MapIcon from '@mui/icons-material/Map';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 
-import "../css/Suppliers.css";
+import "../../css/Suppliers.css";
 
-import getStates from '../utils/getStates.js';
-import getInfosByCep from "../utils/getInfosByCep.js";
-import createNewSupplier from "../utils/suppliers/createNewSupplier.js";
+import getStates from '../../utils/getStates.js';
+import getInfosByCep from "../../utils/getInfosByCep.js";
+import editInfosSupplier from "../../utils/suppliers/editSupplier.js";
+import getSupplierById from "../../utils/suppliers/getSupplierById.js";
 
-const NewSupplier = () => {
+const EditSupplierPage = () => {
 
-    document.title = "Novo Fornecedor";
+    document.title = "Editar Fornecedor";
+
+    const params = useParams();
+    const supplierId = params.supplierId;
 
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
+    const [loadingSupplier, setLoadingSupplier] = useState(true);
     const [loading, setLoading] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [infosCep, setInfosCep] = useState(true);
     const [newSupplier, setNewSupplier] = useState({
-        "companyName": null,
+        "name": null,
         "cnpj": null,
         "email": null,
         "phone": null,
         "whatsapp": null,
         "cep": null,
         "address": null,
-        "numberHouse": null,
+        "number": null,
         "city": null,
         "state": null
     })
+
+    useEffect(() => {
+
+        const loadInfos = async () => {
+
+            try {
+                
+                const infosSupplier = await getSupplierById(token, supplierId);
+
+                setNewSupplier(infosSupplier);
+
+            } catch (error) {
+                
+                console.error(error);
+
+                await Swal.fire({
+                    title: "Ops...",
+                    text: "Não foi possível carregar as informações desse fornecedor",
+                    icon: "error",
+                    timer: 2500,
+                    showConfirmButton: false
+                });
+
+            } finally {
+
+                setLoadingSupplier(false);
+
+            }
+
+        }
+
+        loadInfos();
+
+    }, [])
 
     const getInfos = async (event) => {
 
@@ -76,11 +115,11 @@ const NewSupplier = () => {
 
     };
 
-    const saveNewSupplier = async (event) => {
+    const editSupplier = async (event) => {
 
         event.preventDefault();
 
-        const requiredFields = [newSupplier.companyName, newSupplier.cnpj, newSupplier.email, 
+        const requiredFields = [newSupplier.name, newSupplier.cnpj, newSupplier.email, 
                                 newSupplier.phone, newSupplier.whatsapp, newSupplier.cep, 
                                 newSupplier.address, newSupplier.city, newSupplier.state]
 
@@ -102,7 +141,7 @@ const NewSupplier = () => {
 
         try {
             
-            await createNewSupplier(token, newSupplier);
+            await editInfosSupplier(token, supplierId, newSupplier);
 
             await Swal.fire({
                 title: "Shoow",
@@ -134,11 +173,20 @@ const NewSupplier = () => {
 
     }
 
+    if (loadingSupplier) {
+        return (
+            <div className="loading-container">
+                <div className="spinner"></div>
+                <p>Carregando fornecedor...</p>
+            </div>
+        );
+    }
+
     return (
         <>
             <header className="dashboard-header">
-                <h1>Novo fornecedor</h1>
-                <p>Adicione um novo fornecedor a sua empresa.</p>
+                <h1>Editar fornecedor</h1>
+                <p>Altere as informações de um fornecedor da sua empresa.</p>
             </header>
             <div className="input-container">
                 <div>
@@ -156,6 +204,7 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
+                        value={newSupplier.name}
                         onInput={(e) => setNewSupplier({ ...newSupplier, companyName: e.target.value })}
                     />
                     <TextField
@@ -172,6 +221,7 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
+                        value={newSupplier.cnpj}
                         onInput={(e) => setNewSupplier({ ...newSupplier, cnpj: e.target.value })}
                     />
                 </div>
@@ -191,6 +241,7 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
+                        value={newSupplier.email}
                         onInput={(e) => setNewSupplier({ ...newSupplier, email: e.target.value })}
                     />
                 </div>
@@ -209,6 +260,7 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
+                        value={newSupplier.phone}
                         onInput={(e) => setNewSupplier({ ...newSupplier, phone: e.target.value })}
                     />
                     <TextField
@@ -225,6 +277,7 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
+                        value={newSupplier.whatsapp}
                         onInput={(e) => setNewSupplier({ ...newSupplier, whatsapp: e.target.value })}
                     />
                 </div>
@@ -244,6 +297,7 @@ const NewSupplier = () => {
                         }}
                         variant="outlined"
                         onBlur={(e) => getInfos(e)}
+                        value={newSupplier.cep}
                         onInput={(e) => setNewSupplier({ ...newSupplier, cep: e.target.value })}
                     />
                     <TextField
@@ -260,7 +314,6 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
-                        disabled={infosCep}
                         value={newSupplier.address}
                         onChange={(e) => setNewSupplier({ ...newSupplier, address: e.target.value })}
                     />
@@ -278,9 +331,8 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
-                        disabled={infosCep}
-                        value={newSupplier.numberHouse}
-                        onChange={(e) => setNewSupplier({ ...newSupplier, numberHouse: e.target.value })}
+                        value={newSupplier.number}
+                        onChange={(e) => setNewSupplier({ ...newSupplier, number: e.target.value })}
                     />
                     <TextField
                         sx={{ width: "20%" }}
@@ -296,7 +348,6 @@ const NewSupplier = () => {
                             },
                         }}
                         variant="outlined"
-                        disabled={infosCep}
                         value={newSupplier.city}
                         onChange={(e) => setNewSupplier({ ...newSupplier, city: e.target.value })}
                     />
@@ -305,7 +356,6 @@ const NewSupplier = () => {
                         select
                         id="state"
                         label="Estado"
-                        disabled={infosCep}
                         value={newSupplier.state || ""}
                         onChange={(e) => setNewSupplier({ ...newSupplier, state: e.target.value })}
                     >
@@ -318,12 +368,12 @@ const NewSupplier = () => {
                 </div>
             </div>
             <div style={{ marginTop: "3vh" }}>
-                <button disabled={buttonDisabled} type="button" className="btn-add btn-save" style={{ borderRadius: "5px", height: "55px", width: "100%" }} onClick={(event) => saveNewSupplier(event)}>
-                    {loading ? <div className="spinner"></div> : <span>Cadastrar novo fornecedor</span>}
+                <button disabled={buttonDisabled} type="button" className="btn-add btn-save" style={{ borderRadius: "5px", height: "55px", width: "100%" }} onClick={(event) => editSupplier(event)}>
+                    {loading ? <div className="spinner"></div> : <span>Salvar alterações</span>}
                 </button>
             </div>
         </>
     )
 };
 
-export default NewSupplier;
+export default EditSupplierPage;

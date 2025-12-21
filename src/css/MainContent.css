@@ -1,9 +1,11 @@
 /* src/css/Dashboard.css */
+
 .dashboard-container {
     display: flex;
     height: 100vh;
     background: #f5f6fa;
     font-family: "Poppins", sans-serif;
+    width: 100%;
 }
 
 /* Sidebar */
@@ -57,6 +59,7 @@
     flex: 1;
     padding: 40px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .dashboard-header h1 {
@@ -72,10 +75,11 @@
 
 /* Cards */
 .stats-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
 }
 
 .card {

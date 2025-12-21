@@ -14,29 +14,24 @@ const SupplierItem = (props) => {
     };
 
     return (
-        <div className="supplier-card shadow" onClick={() => navigateSupplier(props.id, "edit")}>
-            
-            <div className="icon-area">
-                <MdFactory size={32} />
-            </div>
-
-            <div className="info-area">
-                <span className="name">{props.name}</span>
-                <span className="contact">{props.cnpj} – {props.email}</span>
-            </div>
-
-            <div className="actions">
-                <button className="btn-action edit" onClick={(e) => { e.stopPropagation(); navigateSupplier(props.id, "edit") }}>
-                    <MdEdit size={20} />
-                </button>
-
-                <button className="btn-action delete" onClick={(e) => { e.stopPropagation(); navigateSupplier(props.id, "delete") }}>
-                    <MdDelete size={20} />
-                </button>
-            </div>
-
-        </div>
-    );
+        <>
+            <tr>
+                <td>{props.name}</td>
+                <td>{props.cnpj}</td>
+                <td>{props.email}</td>
+                <td>{props.address}</td>
+                <td>{props.whatsapp}</td>
+                <td className="actions">
+                    <button className="btn-action edit" onClick={(e) => { e.stopPropagation(); navigateSupplier(props.id, "edit") }}>
+                        <MdEdit size={15} />
+                    </button>
+                    <button className="btn-action delete" onClick={(e) => { e.stopPropagation(); navigateSupplier(props.id, "delete") }}>
+                        <MdDelete size={15} />
+                    </button>
+                </td>
+            </tr>
+        </>
+    )
 };
 
 export default SupplierItem;

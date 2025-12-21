@@ -7,6 +7,7 @@
   pointer-events: none;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +36,170 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.dashboard-card {
+    width: 250px;
+    height: 14vh;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+/* Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-box {
+    width: 38px;
+    height: 38px;
+    background: #e8f0ff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c8d40;
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Valor grande */
+.card-value {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0;
+    color: #111;
+}
+
+/* Subtexto */
+.card-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+
+.table-list {
+    margin-top: 5vh;
+    width: 80vw;
+    max-height: 64vh;
+    overflow-y: auto;
+    padding: 0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.table-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-list::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+.table-list table {
+    width: 100%;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: "Inter", sans-serif;
+}
+
+.table-list thead {
+    background: #f5f5f5;
+}
+
+.table-list thead td {
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.table-list tbody tr {
+    background: #fff;
+    transition: 0.2s ease;
+}
+
+.table-list tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.table-list tbody td {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-list tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.btn-action svg {
+    color: #444;
+}
+
+.btn-action.edit {
+    background-color: #e0ffe0;
+    color: #e0ffe0;
+}
+
+.btn-action.delete {
+    background-color: #ffe0e0;
+    color: #ffe0e0;
+}
+
+.btn-action.edit:hover {
+    background-color: #e0ffe0;
+}
+
+.btn-action.edit:hover svg {
+    color: #2e7d32;
+}
+
+.btn-action.delete:hover {
+    background-color: #ffe0e0;
+}
+
+.btn-action.delete:hover svg {
+    color: #c62828;
 }

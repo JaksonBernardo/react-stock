@@ -39,7 +39,7 @@ const SideBar = () => {
                 </a>
 
                 <a
-                    className={isActive("/dashboard/products") ? "active" : ""}
+                    className={isActive("/dashboard/products") || isActive("/dashboard/products/new") ? "active" : ""}
                     onClick={() => navigate("/dashboard/products")}
                 >
                     <MdInventory /> Produtos

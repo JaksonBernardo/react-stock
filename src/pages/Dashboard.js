@@ -15,11 +15,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <header className="dashboard-header">
-                <h1>Bem-vindo, {userInfos.name}</h1>
-                <p>Gerencie seu estoque e acompanhe seus relatórios em tempo real.</p>
-            </header>
-
+            <h3>Geral</h3>
             {/* Cards de resumo */}
             <section className="stats-cards">
                 <MainCard icon={<TrendingUpIcon size={24} />} title={"Entradas"} value={"R$ 15.235,77"}/>

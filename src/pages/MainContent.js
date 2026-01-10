@@ -20,6 +20,7 @@ import DeleteSupplier from "./suppliers/DeleteSupplier.js";
 
 // PÁGINA DE PRODUTOS
 import Products from "./products/Products.js";
+import NewProduct from "./products/NewProduct.js";
 
 const MainContent = () => {
     return (
@@ -36,6 +37,7 @@ const MainContent = () => {
                     <Route path="/suppliers/edit/:supplierId" element={<EditSupplier />} />
                     <Route path="/suppliers/delete/:supplierId" element={<DeleteSupplier />} />
                     <Route path="/products" element={<Products />} />
+                    <Route path="/products/new" element={<NewProduct />} />
                 </Routes>
             </main>
         </div>

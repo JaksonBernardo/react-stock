@@ -153,7 +153,7 @@ const NewProduct = () => {
             setDisabled(false);
             setSaveProduct(false);
 
-        }
+        };
     };
 
     return (

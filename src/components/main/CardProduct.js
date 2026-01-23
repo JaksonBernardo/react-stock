@@ -13,33 +13,30 @@ const CardProduct = ({ id, image, productName, productValue }) => {
 
 
     return (
-        <div className="product-card" id={id}>
+        <div className="product-card">
+            <div className="options">
+                <button className="option-btn view">
+                    <MdVisibility size={18} />
+                </button>
+                <button className="option-btn edit">
+                    <MdEdit size={18} />
+                </button>
+                <button className="option-btn delete">
+                    <MdDelete size={18} />
+                </button>
+            </div>
+
             <div className="image">
-                <img
-                    src={image || NoImage}
-                    alt={productName}
-                    onError={handleImageError}
-                />
+                <img src={image || NoImage} onError={handleImageError} />
             </div>
-            <div className="name">
-                <span>{productName}</span>
-            </div>
+
+            <div className="name">{productName}</div>
+
             <div className="infos">
                 <div className="price">
-                    <span className="value">{formatToBrlCurrency(productValue)}</span>
-                </div>
-                <div className="options">
-                    <button className="option-btn view" title="Visualizar">
-                        <MdVisibility size={18} />
-                    </button>
-
-                    <button className="option-btn edit" title="Editar">
-                        <MdEdit size={18} />
-                    </button>
-
-                    <button className="option-btn delete" title="Excluir">
-                        <MdDelete size={18} />
-                    </button>
+                    <span className="value">
+                        {formatToBrlCurrency(productValue)}
+                    </span>
                 </div>
             </div>
         </div>

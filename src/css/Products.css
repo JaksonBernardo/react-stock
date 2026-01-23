@@ -1,66 +1,65 @@
 
 .cards {
-    width: 80vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
 }
 
 .product-card {
-    border: 1px solid transparent;
-    border-radius: 15px;
-    padding: 25px 15px;
-    margin: 10px;
-    width: 17vw;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
 .product-card:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
 }
+
 
 .product-card .image {
     width: 100%;
-    height: 250px;              
+    height: 220px;
+    border-radius: 14px;
+    background: #f6f7f9;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: transparent;        
-    border-radius: 8px;
+    justify-content: center;
     overflow: hidden;
 }
 
 .product-card .image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;       
+    object-fit: contain;
 }
 
 .product-card .name {
-    font-size: 1.0em;
-    margin: 10px 0;
-    text-align: justify;
-    font-weight: bold;
+    margin-top: 14px;
+    font-size: 1rem;
+    font-weight: 600;
     color: #1E1E2F;
-    width: 100%;
-    flex-wrap: wrap;
+    line-height: 1.3;
 }
 
+
 .product-card .infos {
-    width: 100%;
+    margin-top: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between!important;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    padding-top: 14px;
 }
 
 .product-card .infos .price {
@@ -69,64 +68,51 @@
     gap: 0px 5px;
 }
 
-.product-card .infos .price .value {
-    font-size: 1.4em;
+.product-card .price .value {
+    font-size: 1.3rem;
+    font-weight: 700;
     color: #4caf50;
-    font-weight: bold;
 }
 
-.product-card .infos .options {
+.product-card .options {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     display: flex;
-    gap: 0px;
+    gap: 6px;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.product-card .infos .options .option-btn {
-    background: transparent;
+.product-card:hover .options {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.option-btn {
+    background: rgba(255,255,255,0.9);
     border: none;
+    border-radius: 10px;
+    padding: 8px;
     cursor: pointer;
-    padding: 6px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.product-card .infos .options {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
+.option-btn:hover {
+    transform: scale(1.08);
 }
 
-.product-card:hover .infos .options {
-    opacity: 1;
-    pointer-events: auto;
-}
+.option-btn.view { color: #4caf50; }
+.option-btn.edit { color: #f9a825; }
+.option-btn.delete { color: #d32f2f; }
 
+.option-btn.view:hover { background: rgba(76, 175, 80, 0.15); }
+.option-btn.edit:hover { background: rgba(249, 168, 37, 0.15); }
+.option-btn.delete:hover { background: rgba(211, 47, 47, 0.15); }
 
-/* Visualizar */
-.product-card .infos .options .view {
-    color: #4caf50;
-}
-
-.product-card .infos .options .view:hover {
-    background: rgba(25, 118, 210, 0.1);
-}
-
-/* Editar */
-.product-card .infos .options .edit {
-    color: #4caf50;
-}
-
-.product-card .infos .options .edit:hover {
-    background: rgba(249, 168, 37, 0.15);
-}
-
-/* Deletar */
-.product-card .infos .options .delete {
-    color: #4caf50;
-}
-
-.product-card .infos .options .delete:hover {
-    background: rgba(211, 47, 47, 0.15);
-}
